@@ -1,0 +1,15 @@
+---
+
+image: gcc
+before_script:
+ - apt-get update --yes
+ - apt-get install --yes cmake
+
+build:
+  script:
+    - cd assignment_2.2
+    - mkdir build 
+    - cd build
+    - cmake ../
+    - make 
+

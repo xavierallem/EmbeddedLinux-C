@@ -1,5 +1,4 @@
 # Index for Assignments 
 
-## Linux commands 
-1. 
-
+1. [Problem 1](problem1.md)
+2. [Problem 2](problem2.md)

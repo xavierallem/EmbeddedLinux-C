@@ -1,2 +1,5 @@
-## C Programming 
-1. 
+# Index for Assignments 
+
+1. [Problem 1](problem1.md)
+2. [Problem 2](problem2.md)
+3. [Problem 2](problem2.md)

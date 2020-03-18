@@ -10,4 +10,4 @@ Please solve all the problem statements and push it to your project.
 2. Make sure you are following the coding style.
 
 After solving these problems don't forget to give the links to the project 
-in google classroom.
+in the issue.

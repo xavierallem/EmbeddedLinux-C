@@ -8,7 +8,7 @@ You will be learning
 
 ## How to complete this module?
 
-<!--
+
 #### Step 1: Learn :
 Read the course Material. You will find the course material 
 in the **Wiki** of the project.
@@ -21,7 +21,7 @@ Write a summary of all the reading material in the project **Issues**.
 Link to [Project Issues](https://gitlab.iotiot.in/newbies/iot-internship-feb-20/module2/issues)
 
 #### Step 3: Practice :
--->
+
 Complete all assignments of the respective module. You will find all assignments
 listed in the Issues marked with your `persona` tags.
 

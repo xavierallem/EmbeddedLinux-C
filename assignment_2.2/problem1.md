@@ -1,37 +1,33 @@
 # Problem 1
 
-Design a data structure to store a list of known sensors segregated into different types.
+### Goal : Program for Configuration for the Wifi and Ethernet in Linux
 
-List of known Sensors, 
+### Description
 
-Type : Temperature sensors   
-List - BME280, SHT3x, DHT11, DHT22.
+Write a program that configures Wifi and Ethernet in Linux while the configuration is given via command line.
 
-Type : Humidity 
-List - BME280, DHT11
+- You can use either C or CPP for the code whichever you feel comfortable. 
 
-Please use the given Sensors and their types only, and not take input from the user. 
+- For configuration of Wifi & Ethernet, Please use the documentation below
+    - Wifi configuration using wpa_supplicant - https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
+    - Ethernet configuration - https://raspberrypi.stackexchange.com/a/74428
 
-Instead the user will input the Sensor Name and the output should be the Type of sensor.
+## Parameters to be configured are
 
-For Example:
+- Wifi 
+    - ssid
+    - password 
 
-User Input:
-```
-BME280
-```
-
-Ideal output:
-```
-Temperature sensors
-Humidity
-```
+- Ethernet
+    - dhcp = yes/no 
+    - static_ip_address 
+    - subnet_mask 
+    - router_ip_address
 
 
-Design considerations:
-1. The data structure must consume very small amount of memory, O(n) is ideal.
-2. The time needed to search the data structure must be very small, O(1) is ideal. 
-
-Constraints:
-1. Only use C programming 
-2. All the data structures used must be supported by C.
+### Acceptance Criteria 
+This is the criteria to accept the assignment.
+- The code must be divided into functions 
+- **Must** have documentation for using the program.
+- Code **Must** follow the Coding Standards.
+- Show the proof of working program, use your own creativity to show proof, it can be screen-shots, logs, etc... 

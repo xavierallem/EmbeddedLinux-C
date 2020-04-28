@@ -1,17 +1,33 @@
 # Problem 2
 
-Write a program which searches for the occurrences of a pattern in a file.
-And prints the line number where the pattern occurred.
+### Goal : Program for Bluetooth actions in Linux
 
-For example:
-Lets say pattern `uint` occurs at line 40 in file try.c
+### Description
 
-Then passing these arguments to your program should print 
-```sh
-./program 'uint' path/to/try.c
-# Program runs and prints 
-Found uint at line 40 in try.c
-```
+Using Bluetooth you can 
+- Pair a Bluetooth device
+- Send file using Bluetooth 
+- Access GATT services from BLE.
 
-Constraints:
-1. Only use C programming.
+
+Write a program that runs Bluetooth shell commands when run for all the 
+above Bluetooth functions.
+
+- You can use either C or CPP for the code whichever you feel comfortable. 
+- For script on 
+    - Paring Bluetooth devices
+    - Send file using Bluetooth 
+use these scripts - 
+- For script on 
+    - Access GATT services from BLE, use your own script that you have written 
+    in assignment 2.1 Problem 2.
+
+
+### Acceptance Criteria 
+This is the criteria to accept the assignment.
+- Each shell commands must be divided into the individual functions  
+- **Must** have documentation for using the program.
+- Code **Must** follow the Coding Standards.
+- Each action like Pairing or Sending file etc must be made into individual 
+functions
+- All functions must be properly documented with Doxygen.

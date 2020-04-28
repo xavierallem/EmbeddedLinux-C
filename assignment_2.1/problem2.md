@@ -1,8 +1,17 @@
 # Problem 2
 
-## Problem statement
+## Description 
 
-Write a shell script, which Downloads this file 
-`http://packages.shunyaos.org/armv8/aarch64/Packages` every every 2 minutes, 
-also make sure that the file does not download when there is no Internet connectivity.
+Write a shell script that "Access GATT services from BLE" Device using 
+bluetoothctl commands.
+
+
+### Acceptance Criteria 
+
+- The script must connect to a BLE device and show all its available services
+- The script must then be able to read a service from the device.
+
+
+### Reference links
+1. Accessing GATT services - https://docs.ubuntu.com/core/en/stacks/bluetooth/bluez/docs/reference/gatt-services
 

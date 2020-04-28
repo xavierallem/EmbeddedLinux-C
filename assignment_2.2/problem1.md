@@ -1,10 +1,37 @@
 # Problem 1
 
-### Goal : Program for Configuration for the Wifi and Ethernet in Linux
+### Goal : Remote Configuration of Wifi and Ethernet in Linux on an Embedded device
+
+### Architecture of communication
+
+![arch](/extras/arch.png)
+
 
 ### Description
 
-Write a program that configures Wifi and Ethernet in Linux while the configuration is given via command line.
+Write an MQTT Client that Subscribes to 2 different topics "config/wifi" & "config/eth"
+and configures Wifi and Ethernet when commands are received on these MQTT topics.
+
+
+#### Commands being received on these Topics
+
+- For Wifi
+
+| Command | Description | Example |
+|----------------------------|----------------------------------------|---------------------------------------|
+| wifi on | Turns on wifi | wifi on |
+| wifi off | Turns off wifi | wifi off |
+| wifi connect ssid password | Connects to Wifi given SSID & password | wifi connect Jio-wifi secret-password |
+
+- For Ethernet
+
+| Command | Description | Example |
+|---------------------------------------------------------|-------------------------------------------|-------------------------------------------------------------------|
+| ethernet on | Turns on ethernet | ethernet on |
+| ethernet off | Turns off ethernet | ethernet off |
+| ethernet connect dhcp | Connect to Internet via DHCP address | ethernet connect dhcp |
+| ethernet connect static static_ip subnet_mask router_ip | Connect to internet via Static IP address | ethernet connect static 192.168.0.100 255.255.255.254 192.168.0.1 |
+
 
 - You can use either C or CPP for the code whichever you feel comfortable. 
 
@@ -12,18 +39,18 @@ Write a program that configures Wifi and Ethernet in Linux while the configurati
     - Wifi configuration using wpa_supplicant - https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
     - Ethernet configuration - https://raspberrypi.stackexchange.com/a/74428
 
-## Parameters to be configured are
 
-- Wifi 
-    - ssid
-    - password 
+### For Example: 
 
-- Ethernet
-    - dhcp = yes/no 
-    - static_ip_address 
-    - subnet_mask 
-    - router_ip_address
+Lets say 
+#### Given (Input)
+the MQTT Client subscribed to topic "config/wifi" receives message/command
+`wifi connect jio-wifi password` 
+#### Then (output)
+the client should configure the wifi on the device 
+to connect to the jio-wifi AP with the password.
 
+Similarly for all the commands above tables.
 
 ### Acceptance Criteria 
 This is the criteria to accept the assignment.

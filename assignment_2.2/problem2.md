@@ -1,6 +1,8 @@
 # Problem 2
 
-### Goal : Remote Configuration of Wifi and Ethernet in Linux on an Embedded device
+### Study Goal : Test C program skills + shell program skills using MQTT and shell commands
+
+### Assignment Goal : Remote Configuration of Wifi and Ethernet in Linux on an Embedded device
 
 ### Architecture of communication
 
@@ -9,7 +11,7 @@
 
 ### Description
 
-Write an MQTT Client that Subscribes to one topic "config/ble" and when commands are received on these MQTT topics it communicates with devices over bluetooth.
+Write an Program that Subscribes to one topic "config/ble" and when commands are received on these MQTT topics it communicates with devices over bluetooth.
 
 
 - [Paho MQTT Client installation Document](/extras/Documentation_for_installing_paho_mqtt_c.md)

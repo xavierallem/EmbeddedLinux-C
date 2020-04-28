@@ -57,4 +57,5 @@ This is the criteria to accept the assignment.
 - The code must be divided into functions 
 - **Must** have documentation for using the program.
 - Code **Must** follow the Coding Standards.
-- Show the proof of working program, use your own creativity to show proof, it can be screen-shots, logs, etc... 
+
+#### Note: Documentation of the whole program is a must criteria for the completion of the Assignment.

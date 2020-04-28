@@ -12,6 +12,9 @@
 Write an MQTT Client that Subscribes to one topic "config/ble" and when commands are received on these MQTT topics it communicates with devices over bluetooth.
 
 
+- [Paho MQTT Client installation Document](/extras/Documentation_for_installing_paho_mqtt_c.md)
+- [MQTT Client example code](/extras/MQTTPub-Sub.c)
+
 #### Commands being received
 
 | Command | Description | Example |

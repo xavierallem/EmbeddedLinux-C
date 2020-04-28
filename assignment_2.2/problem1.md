@@ -12,6 +12,8 @@
 Write an MQTT Client that Subscribes to 2 different topics "config/wifi" & "config/eth"
 and configures Wifi and Ethernet when commands are received on these MQTT topics.
 
+- [Paho MQTT Client installation Document](/extras/Documentation_for_installing_paho_mqtt_c.md)
+- [MQTT Client example code](/extras/MQTTPub-Sub.c)
 
 #### Commands being received on these Topics
 

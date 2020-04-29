@@ -42,6 +42,9 @@ Write an Program that Subscribes to one topic "config/ble" and when commands are
     - Access GATT services from BLE, use your own script that you have written 
     in assignment 2.1 Problem 2.
 
+- MQTT Client Publishes back to the same topic the Success or the Error of the 
+shell commands run for bluetooth.
+
 ### For Example: 
 
 Lets say 

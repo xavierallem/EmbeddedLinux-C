@@ -41,6 +41,9 @@ and configures Wifi and Ethernet when commands are received on these MQTT topics
     - Wifi configuration using wpa_supplicant - https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
     - Ethernet configuration - https://raspberrypi.stackexchange.com/a/74428
 
+- MQTT Client Publishes back to the same topic the Success or the Error of the 
+  wifi or ethernet configuration.
+
 
 ### For Example: 
 

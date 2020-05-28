@@ -1,66 +1,68 @@
 # Problem 1
 
-### Goal : Remote Configuration of Wifi and Ethernet in Linux on an Embedded device
-
-### Architecture of communication
-
-![arch](/extras/arch.png)
+### Goal : Write code to parse a JSON configuration file and configure Wifi and Ethernet parameters in Linux.
 
 
-### Description
+### Output
+Ouptut should be a code which 
+- Parses the given JSON file
+- Configure Ethernet and Wifi according to the parameters given in the JSON file
 
-Write an MQTT Client that Subscribes to 2 different topics "config/wifi" & "config/eth"
-and configures Wifi and Ethernet when commands are received on these MQTT topics.
+### Inputs (Reading Materials for the Task)
 
-- [Paho MQTT Client installation Document](/extras/Documentation_for_installing_paho_mqtt_c.md)
-- [MQTT Client example code](/extras/MQTTPub-Sub.c)
-
-#### Commands being received on these Topics
-
-- For Wifi
-
-| Command | Description | Example |
-|----------------------------|----------------------------------------|---------------------------------------|
-| wifi on | Turns on wifi | wifi on |
-| wifi off | Turns off wifi | wifi off |
-| wifi connect ssid password | Connects to Wifi given SSID & password | wifi connect Jio-wifi secret-password |
-
-- For Ethernet
-
-| Command | Description | Example |
-|---------------------------------------------------------|-------------------------------------------|-------------------------------------------------------------------|
-| ethernet on | Turns on ethernet | ethernet on |
-| ethernet off | Turns off ethernet | ethernet off |
-| ethernet connect dhcp | Connect to Internet via DHCP address | ethernet connect dhcp |
-| ethernet connect static static_ip subnet_mask router_ip | Connect to internet via Static IP address | ethernet connect static 192.168.0.100 255.255.255.254 192.168.0.1 |
-
-
-- You can use either C or CPP for the code whichever you feel comfortable. 
+- For parsing the JSON file use the [RapidJSON library](examples/RapidJson.md).
 
 - For configuration of Wifi & Ethernet, Please use the documentation below
     - Wifi configuration using wpa_supplicant - https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
     - Ethernet configuration - https://raspberrypi.stackexchange.com/a/74428
 
-- MQTT Client Publishes back to the same topic the Success or the Error of the 
-  wifi or ethernet configuration.
+- Example JSON file
+```json
+{
+  "wireless": {
+    "device": "wlan0",
+    "status": "on",
+    "ssid": "Hegde-Jio",
+    "password": "secretpassword"
+  },
+  "ethernet": [
+      {
+        "device": "eth0",
+        "status": "on",
+        "allocation": "static",
+        "ipAddress": "192.168.0.100",
+        "subnetMask": "255.255.255.0",
+        "routerAddress": "192.168.0.1"
+      },
+      {
+        "device": "eth1",
+        "status": "on",
+        "allocation": "dhcp",
+        "ipAddress": null,
+        "subnetMask": null,
+        "routerAddress": null
+      },
+  ]
+}
+```
+
+#### Explanation of the JSON file 
+
+1. The "status" property for Wifi and ethernet can be use to turn on/off the 
+Wifi or ethernet.
+2. For Ethernet `allocation` property is used for setting "dhcp" or "static"
+In case of "dhcp" the ethernet is configured in dhcp mode and in case of static
+the ethernet is configured in static mode.
 
 
-### For Example: 
+### Acceptance Criteria
+These are the criteria for accepting the assignment.
 
-Lets say 
-#### Given (Input)
-the MQTT Client subscribed to topic "config/wifi" receives message/command
-`wifi connect jio-wifi password` 
-#### Then (output)
-the client should configure the wifi on the device 
-to connect to the jio-wifi AP with the password.
-
-Similarly for all the commands above tables.
-
-### Acceptance Criteria 
-This is the criteria to accept the assignment.
+- You can use either C or CPP for the code whichever you feel comfortable.
+- You need to use the RapidJSON library for parsing JSON file. 
 - The code must be divided into functions 
 - **Must** have documentation for using the program.
-- Code **Must** follow the Coding Standards.
+- Code **Must** follow the given Coding Standards.
+
 
 #### Note: Documentation of the whole program is a must criteria for the completion of the Assignment.

@@ -1,0 +1,28 @@
+{
+  "wireless": {
+    "status": "on",
+    "ssid": "Hegde-Jio",
+    "password": "secretpassword"
+  },
+  "ethernet": {
+    "status": "on",
+    "allocation": "dhcp",
+    "ipAddress": "192.168.0.100",
+    "subnetMask": "255.255.255.0",
+    "routerAddress": "192.168.0.1"
+  },
+  "cloud": [
+        {
+            "provider": "AWS",
+            "endpoint": "djsflkjsdlfjalsdkf",
+            "port": 8886,
+            "certLocation": "/home/yogesh/.aws/"
+        },
+        {
+            "provider": "Google",
+            "endpoint": "djsflkjsdlfjalsdkf",
+            "port": 9096,
+            "certLocation": "/home/yogesh/.gcp/"
+        }
+    ]
+}

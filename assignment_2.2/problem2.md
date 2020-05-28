@@ -1,70 +1,38 @@
 # Problem 2
 
-### Study Goal : Test C program skills + shell program skills using MQTT and shell commands
-
-### Assignment Goal : Remote Configuration of Wifi and Ethernet in Linux on an Embedded device
-
-### Architecture of communication
-
-![arch](/extras/arch.png)
+### Goal : Write code to parse a JSON configuration file and configure hostname and timezone  parameters in Linux.
 
 
-### Description
+### Output
+Ouptut should be a code which 
+- Parses the given JSON file
+- Configure hostname and timezone according to the parameters given in the JSON file
 
-Write an Program that Subscribes to one topic "config/ble" and when commands are received on these MQTT topics it communicates with devices over bluetooth.
+### Inputs (Reading Materials for the Task)
+
+- For parsing the JSON file use the [RapidJSON library](examples/RapidJson.md).
+
+- For configuration of hostname and timezone, Please use the documentation below
+    - Change Hostname - https://www.tecmint.com/set-hostname-permanently-in-linux/
+    - Change Timezone - https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/
+
+- Example JSON file
+```json
+{
+  "hostname": "raspberrypi",
+  "timezone": "Pacific/Kolkata"
+}
+```
 
 
-- [Paho MQTT Client installation Document](/extras/Documentation_for_installing_paho_mqtt_c.md)
-- [MQTT Client example code](/extras/MQTTPub-Sub.c)
+### Acceptance Criteria
+These are the criteria for accepting the assignment.
 
-#### Commands being received
-
-| Command | Description | Example |
-|--------------------------------------|-------------------------------------------------------------|-------------------------------------------------|
-| bluetooth on | Turn on Bluetooth | bluetooth on |
-| bluetooth off | Turns off Bluetooth | bluetooth off |
-| bluetooth pair MAC_address | Pairs the device given the MAC_address of the device | bluetooth pair ac:d1:b8:cb:56:93 |
-| bluetooth send file_path MAC_address | Sends the file to the bluetooth device with the mac_address | bluetooth send /home/file.txt ac:d1:b8:cb:56:93 |
-| bluetooth show gatt-services | Shows all the available GATT services of the BLE device | bluetooth show gatt-services |
-| bluetooth read gatt/service/ | Reads from the GATT services of the BLE device | bluetooth read gatt/service1/ |
-| bluetooth write gatt/service/ value | Writes a value to the GATT service | bluetooth write gatt/service2/ 40 |
-
-
-- You can use either C or CPP for the code whichever you feel comfortable. 
-
-- We already have a script for  
-    - Turning Bluetooth on and off
-    - Paring Bluetooth devices
-    - Send file using Bluetooth
-[link to the script](/extras/bluetooth.sh) please run commands in the script for pairing and sending files
-
-- For script on 
-    - Access GATT services from BLE, use your own script that you have written 
-    in assignment 2.1 Problem 2.
-
-- MQTT Client Publishes back to the same topic the Success or the Error of the 
-shell commands run for bluetooth.
-
-### For Example: 
-
-Lets say 
-
-#### Given (Input)
-the MQTT Client subscribed to topic "config/ble" receives message/command
-`bluetooth pair ac:d1:b8:cb:56:93` 
-
-#### Then (output)
-the client should run shell commands on the device 
-to pair the bluetooth to the `ac:d1:b8:cb:56:93` device.
-
-Similarly for all the commands above tables.
-
-### Acceptance Criteria 
-This is the criteria to accept the assignment.
+- You can use either C or CPP for the code whichever you feel comfortable.
+- You need to use the RapidJSON library for parsing JSON file. 
+- The code must be divided into functions 
 - **Must** have documentation for using the program.
-- Code **Must** follow the Coding Standards.
-- Each action like Pairing or Sending file etc must be made into individual 
-functions
-- All functions must be properly documented with Doxygen.
+- Code **Must** follow the given Coding Standards.
 
-#### Note: Please do not hard code variables such as MAC_address or File path in your code.
+
+#### Note: Documentation of the whole program is a must criteria for the completion of the Assignment.

@@ -16,6 +16,11 @@ Ouptut should be a code which
     - Wifi configuration using wpa_supplicant - https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
     - Ethernet configuration - https://raspberrypi.stackexchange.com/a/74428
 
+- For configuration of hostname and timezone, Please use the documentation below
+    - Change Hostname - https://www.tecmint.com/set-hostname-permanently-in-linux/
+    - Change Timezone - https://linuxize.com/post/how-to-set-or-change-timezone-in-linux/
+
+
 - Example JSON file
 ```json
 {
@@ -42,7 +47,10 @@ Ouptut should be a code which
         "subnetMask": null,
         "routerAddress": null
       },
-  ]
+  ],
+  "hostname": "raspberrypi",
+  "timezone": "Pacific/Kolkata"
+
 }
 ```
 

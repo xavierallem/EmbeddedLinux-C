@@ -7,7 +7,7 @@ before_script:
 
 build:
   script:
-    - cd assignment_2.2
+    - cd assignments/practice/
     - mkdir build 
     - cd build
     - cmake ../

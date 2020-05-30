@@ -1,0 +1,21 @@
+{
+    "wireless": {
+        "status": "on",
+        "ssid": "Hegde-Jio",
+        "password": "secretpassword"
+    },
+    "cloud": [
+        {
+            "provider": "AWS",
+            "endpoint": "djsflkjsdlfjalsdkf",
+            "port": 8886,
+            "certLocation": "/home/yogesh/.aws/"
+        },
+        {
+            "provider": "Google",
+            "endpoint": "djsflkjsdlfjalsdkf",
+            "port": 9096,
+            "certLocation": "/home/yogesh/.gcp/"
+        }
+    ]
+}

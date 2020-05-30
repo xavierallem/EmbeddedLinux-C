@@ -22,11 +22,11 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 endif()
 
 # Add rules to create the binary files
-add_executable(problem1 problem1.c)
-add_executable(problem2 problem2.c)
+#add_executable(problem1 problem1.c)
+add_executable(problem2 problem2.cxx)
 
 
-target_link_libraries(problem1 PUBLIC  -lm )
+#target_link_libraries(problem1 PUBLIC  -lm )
 target_link_libraries(problem2 PUBLIC  -lm )
 
 

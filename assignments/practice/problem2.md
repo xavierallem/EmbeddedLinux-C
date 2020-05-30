@@ -1,4 +1,4 @@
-# Problem 1
+# Problem 2
 
 ### Goal : Write code to parse a JSON configuration file and configure Wifi and Ethernet parameters in Linux.
 

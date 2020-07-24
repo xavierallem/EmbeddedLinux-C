@@ -1,4 +1,4 @@
-# Problem 1
+# Problem 2
 
 ### Goal : Write code to parse a JSON configuration file and configure Wifi and Ethernet parameters in Linux.
 
@@ -71,6 +71,7 @@ These are the criteria for accepting the assignment.
 - The code must be divided into functions 
 - **Must** have documentation for using the program.
 - Code **Must** follow the given Coding Standards.
+- Code **Must** handle all the errors for the system calls that it is using.
 
 
 #### Note: Documentation of the whole program is a must criteria for the completion of the Assignment.

@@ -102,6 +102,53 @@
     ```bash
     $ clear
     ```
+- ### Permissions
+    - **chmod <file> 755** - Change permissions of file to 755
+    ```bash
+    $ chmod file 755
+    ```
+    - **chmod -R 600 <dir>** - Change permissons of all contents in directory "dir" to 600
+    ```bash
+    $ chmod -R 600 dir 
+    ```
+    - **chown <user>:<group> <file>** - Change ownership of file to user and group
+    ```bash
+    $ chown user:group file
+    ```
+- ### Networking
+    - **ping** - Ping "host" and display status
+    ```bash
+    $ ping host
+    ```
+    - **whois <domain>** - Output whois information for "domain"
+    ```bash
+    $ whois domain
+    ```
+    - **curl** - Download file from url
+    ```bash
+    $ curl -O <url/to/file>
+    ```
+    - **ssh** - Connect to "host" with use "username"
+    ```bash
+    $ ssh username@host
+    ```
+    - **scp** - copy file "f" to remote host "host" with user "username"
+    ```bash
+    $ scp f username@host:/remote/path
+    ```
+- ### Processess
+    - **ps ax** - Output currently running processes
+    ```bash
+    $ ps ax
+    ```
+    - **top** - Display live info of currently running processes
+    ```bash
+    $ top
+    ```
+    - **kill** - Kill process with process Id  "ID"
+    ```bash
+    $ kill ID
+    ```
     
     
     

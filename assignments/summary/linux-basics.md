@@ -86,15 +86,15 @@
     ```bash
     $ head f
     ```
-    - **<cmd> <file>** - Direct output of cmd into file
+    - **cmd file** - Direct output of cmd into file
     ```bash
     $ <cmd> <file>
     ```
-    **<cmd> >> <file>** -Append the output of cmd to file 
+    **cmd >> file** -Append the output of cmd to file 
     ```bash
     $ <cmd> <file>
     ```
-    **<cmd1> | <cmd2>** - Direct the output of cmd1 to cmd2
+    **cmd1 | cmd2** - Direct the output of cmd1 to cmd2
     ```bash
     $ <cmd> <file>
     ```

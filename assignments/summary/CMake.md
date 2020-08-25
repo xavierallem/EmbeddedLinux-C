@@ -88,5 +88,7 @@ $ cmake CMakeLists.txt
 $ make all
 ```
 
+**Note** : To learn more about CMake [Click Me](https://medium.com/@onur.dundar1/cmake-tutorial-585dd180109b)
+
 
 

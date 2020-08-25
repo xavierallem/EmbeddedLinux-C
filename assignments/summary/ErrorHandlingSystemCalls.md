@@ -16,7 +16,7 @@ Hence it becomes necessary to understand them and always use them correctly.
 - [**Signal Functions**](#signal-functions)
 - [**Memory Mapping**](#memory-mapping)
 - [**Socket Functions**](#socket-functions)
-- [**DNS functions**](#dns-function)
+- [**DNS functions**](#dns-functions)
 - [**Pthread functions**](#pthread-functions)
 - [**Semaphores**](#semaphores)
 - [**Other Uncommon functions**](#other-uncommon-functions)

@@ -8,7 +8,7 @@ Hence it becomes necessary to understand them and always use them correctly.
 
 ## Code Snippets
 
-- [**Print Error Messages Function**](print-error-messages-function)
+- [**Print Error Messages Function**](#print-error-messages-function)
 - [**Linux I/O routines**] (#2)
 - [**Standard File I/O functions**] (#3)
 - [**Dynamic Storage**] (#4)

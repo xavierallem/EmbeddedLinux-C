@@ -9,7 +9,7 @@ Hence it becomes necessary to understand them and always use them correctly.
 ## Code Snippets
 
 - [**Print Error Messages Function**](#print-error-messages-function)
-- [**Linux I/O routines**] (#2)
+- [**Linux I/O routines**](#linux-i/o-routines)
 - [**Standard File I/O functions**] (#3)
 - [**Dynamic Storage**] (#4)
 - [**Process Control**] (#5)
@@ -54,5 +54,89 @@ void app_error(char *msg) /* application error */
     exit(0);
 }
 /* $end errorfuns */
+
+```
+
+### Linux I/O routines
+
+```c
+/********************************
+ * Wrappers for Unix I/O routines
+ ********************************/
+
+int Open(const char *pathname, int flags, mode_t mode) 
+{
+    int rc;
+
+    if ((rc = open(pathname, flags, mode))  < 0)
+    unix_error((char*)"Open error");
+    return rc;
+}
+
+ssize_t Read(int fd, void *buf, size_t count) 
+{
+    ssize_t rc;
+
+    if ((rc = read(fd, buf, count)) < 0) 
+    unix_error((char*)"Read error");
+    return rc;
+}
+
+ssize_t Write(int fd, const void *buf, size_t count) 
+{
+    ssize_t rc;
+
+    if ((rc = write(fd, buf, count)) < 0)
+    unix_error((char*)"Write error");
+    return rc;
+}
+
+off_t Lseek(int fildes, off_t offset, int whence) 
+{
+    off_t rc;
+
+    if ((rc = lseek(fildes, offset, whence)) < 0)
+    unix_error((char*)"Lseek error");
+    return rc;
+}
+
+void Close(int fd) 
+{
+    int rc;
+
+    if ((rc = close(fd)) < 0)
+    unix_error((char*)"Close error");
+}
+
+int Select(int  n, fd_set *readfds, fd_set *writefds,
+       fd_set *exceptfds, struct timeval *timeout) 
+{
+    int rc;
+
+    if ((rc = select(n, readfds, writefds, exceptfds, timeout)) < 0)
+    unix_error((char*)"Select error");
+    return rc;
+}
+
+int Dup2(int fd1, int fd2) 
+{
+    int rc;
+
+    if ((rc = dup2(fd1, fd2)) < 0)
+    unix_error((char*)"Dup2 error");
+    return rc;
+}
+
+void Stat(const char *filename, struct stat *buf) 
+{
+    if (stat(filename, buf) < 0)
+    unix_error((char*)"Stat error");
+}
+
+void Fstat(int fd, struct stat *buf) 
+{
+    if (fstat(fd, buf) < 0)
+    unix_error((char*)"Fstat error");
+}
 
 ```

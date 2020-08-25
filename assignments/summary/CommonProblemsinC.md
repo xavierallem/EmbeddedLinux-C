@@ -1,6 +1,6 @@
 # Common Programming Errors Summary
 
-![error](assignments/summary/Assets/Errors-In-C.png)
+
 
 ## Common Mistakes while C Programming
 

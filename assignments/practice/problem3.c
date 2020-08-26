@@ -25,7 +25,7 @@
 #include<stdlib.h> // header defines four variable types, several macros, and various functions for performing general functions.
 #include<string.h> // header contains library function of string manipulation functions
 /* --- Project Includes --- */
-
+#include <errno.h>
 
 /*
  *#####################################################################

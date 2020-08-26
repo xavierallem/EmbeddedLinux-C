@@ -1,10 +1,10 @@
 ## @file <file_name>.sh
- #  @brief Give a description of the file 
+ #  @brief Bluetooth Tool 
  #  
- #  Give full description of the file 
+ #  Connecting to a bluetooth device in linux using shell
  #  
- #  @author Full name of the author 
- #  @bug List Any bugs found in the file  
+ #  @author Allen Xavier
+ #  @bug None 
  #
 
 #
@@ -30,7 +30,8 @@
 ## 
  #  @brief Description on function_1
  #  
- #  Full description of the function
+ # the function_1 block will scan the devices and take input and connect 
+ # to the respected device
  #
 
 function_1

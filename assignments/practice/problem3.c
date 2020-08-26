@@ -99,8 +99,7 @@ struct data *parse(struct data *ptr)                                    // colle
     struct data *temp=NULL,*nu=NULL; 
     char temp1[80]={0};
     FILE *fp; // declaring a FILE pointer 
-    
-     fp = Fopen(fname, "r");
+    fp=Fopen("data.csv","r");
         
     
 // opening the file in read mode  

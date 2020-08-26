@@ -52,7 +52,7 @@ int searchInFile(char *fname, char *str) {
 
     if((fp = fopen(fname, "r")) == NULL) {
         printf("Error: Opening the file.\n");
-        delete [] temp;
+        
       return(-1);
     }
 
@@ -61,12 +61,12 @@ int searchInFile(char *fname, char *str) {
             printf("A match found on line: %d\n", line_num);
             printf("\n%s\n", temp);
             find_result++;
-            delete [] temp;
+           
             return (1);
         }
         line_num++;
     }
-    delete [] temp;
+    
 
     if(find_result == 0) {
         printf("\nSorry, couldn't find a match.\n");

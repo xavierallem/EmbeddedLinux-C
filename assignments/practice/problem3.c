@@ -51,16 +51,52 @@ struct data             // declaring structure with tagnmae as data and members 
     char sample[80];
     struct data *next;  
 };
+/*---------------------------------------*/
 
+
+FILE *Fopen(const char *filename, const char *mode) 
+{
+    FILE *fp;
+
+    if ((fp = fopen(filename, mode)) == NULL)
+    unix_error((char*)"Fopen error");
+
+    return fp;
+}
+void *Calloc(size_t nmemb, size_t size) 
+{
+    void *p;
+
+    if ((p = calloc(nmemb, size)) == NULL)
+    unix_error((char*)"Calloc error");
+    return p;
+}
+char *Fgets(char *ptr, int n, FILE *stream) 
+{
+    char *rptr;
+
+    if (((rptr = fgets(ptr, n, stream)) == NULL) && ferror(stream))
+    app_error((char*)"Fgets error");
+
+    return rptr;
+}
+
+
+
+/*---------------------------------------------------*/
 struct data *parse(struct data *ptr)                                    // collecting the address of initial link list into a pointer which is structure type.
 {                                                                       // declarations and assigning the values
     struct data *temp=NULL,*nu=NULL; 
     char temp1[80]={0};
     FILE *fp; // declaring a FILE pointer 
-    fp=fopen("data.csv","r");                                           // opening the file in read mode  
-    while(fgets(temp1,80,fp)!=NULL)                                     // by using fgets library function accepting the file content line by line and storing it into a temp1 char array 
+    
+     fp = Fopen(fname, "r");
+        
+    
+// opening the file in read mode  
+    while(Fgets(temp1,80,fp)!=NULL)                                     // by using fgets library function accepting the file content line by line and storing it into a temp1 char array 
     {
-        nu=calloc(1,sizeof(struct data));                               // allocating memory for new node with sizeof structure 
+        nu=Calloc(1,sizeof(struct data));                               // allocating memory for new node with sizeof structure 
         strcpy(nu->sample,temp1);                                     //by using strcpy string copy, copying the content of temp1 to new node. 
         if(ptr==NULL) // checking condition if ptr is NULL the list is empty so, we allocate a new node to ptr initial one.
         {
@@ -85,7 +121,7 @@ void Search(struct data *ptr)                                                   
     char str[40]={0},*token=NULL,temp1[80]={0};
     static unsigned int cnt=0;                                                  // static count which remains until the program ends
     printf("What timestamp you want to search for: ");                          // prints the message
-    fgets(str,40,stdin);                                                        // taking the input from user
+    Fgets(str,40,stdin);                                                        // taking the input from user
     while(temp&&strstr(temp->sample,str)==NULL)                                // if above case is false then here, traverse untill the temp is a valid node (upto last node) and checking until getting an string we are searching for, if found loop terminates otherwise continues if anyone case is false(ie is string found or temp reached to NULL value(last node next)).
     {
         temp=temp->next;

@@ -34,11 +34,31 @@
  #
 
 function_1
-{
+{   # Display message
+    echo "-----------------"
+    echo "Bluetooth Tool Starting"
+    echo "-----------------"
+    # scan your bluetooth device and get MAC Address
+    hcitool dev
+    echo "Enter the device from which you want to scan "
+    # input
+    read $name 
+    # get the target device
+    hcitool -i $name scan
+    echo "Enter the MAC Address pf the device you want to conenct "
+    # input
+    read $device
+    # Connect 
+    bluetoothctl
+    trust $device
+    connect $device
+    
 
-        # Make sure you comment every line #
+        
 	
 }
+
+
 
 
 #
@@ -48,5 +68,17 @@ function_1
  #  All your function callbacks and shell commands go below
  ######################################################################
  #
-
+# Welcome messgage
+echo "Welcome Press 1 to start"
+# input
+read $cond
+# conitions
+if [cond=='1' ]
+then
+# true
+  function_1
+else
+# false
+  echo "Wrong input"
+fi
 # Make sure you comment every line #

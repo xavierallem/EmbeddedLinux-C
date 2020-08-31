@@ -190,7 +190,7 @@ int main (void)
 function_1();
 
    puts("Getting Ethernet data.............");
-    puts("-----Starting Ethernet connection------")     ;
+    puts("-----Starting Ethernet connection------");
 /*-------------Ethernet--------------*/
 function_2();
 

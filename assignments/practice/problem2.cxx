@@ -183,14 +183,14 @@ int main (void)
 
 {
     
-    puts("Getting Started.............")
-    puts("-----Starting Wfifi------")
+    puts("Getting Started.............");
+    puts("-----Starting Wfifi------");
 
 /*----------------------wifi function---------------------*/
 function_1();
 
-   puts("Getting Ethernet data.............")
-    puts("-----Starting Ethernet connection------")     
+   puts("Getting Ethernet data.............");
+    puts("-----Starting Ethernet connection------")     ;
 /*-------------Ethernet--------------*/
 function_2();
 

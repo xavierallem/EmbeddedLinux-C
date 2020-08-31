@@ -50,32 +50,88 @@ using namespace rapidjson;
  *  @return List all Function returns 
  */
 
-void function_1 (char *ptr)
+void function_2 (void)
 {
 
 
-system(ptr);
 
-        /*Make sure you comment every line */
+	/* Open the interfaces file in write mode */
+     FILE*	fp = fopen("/etc/network/interfaces", "wb"); 
+    /* Parsing device */
+	Value& edevice = d["ethernet"][0]["device"];
+	/* variable to store  */
+	char device[100];
+	/* Copying parsed data to variable */
+    strcpy(device,edevice.GetString());
+    /* Parsing allocation data */
+	Value& ealloc = d["ethernet"][0]["allocation"];
+	/* Variable to store */
+	char alloc[100];
+	/* Copying the parsed data to variable */
+    strcpy(alloc,ealloc.GetString());
+    /* Parsing Ip */
+	Value& eIp = d["ethernet"][0]["ipAddress"];
+	/* Variable to store */
+	char ip[100];
+	/* Coping parsed data into variable */
+    strcpy(ip,eIp.GetString());
+    /* Parsing subnet mask */
+	Value& esm = d["ethernet"][0]["subnetMask"];
+	/* Variable to store */
+	char sm[100];
+	/* Copying parsed data into variable  */
+    strcpy(sm,esm.GetString());
+    /* Parsing router address */
+	Value& erout = d["ethernet"][0]["routerAddress"];
+	/* Variable to store */
+	char rout[100];
+	/* Copying the parsed data */
+    strcpy(rout,erout.GetString());
+    /*  Commands for interface file   */
+    
+    /* variable to store first command string */
+	char c[100]="auto ";
+	/* append to command  */
+	strcat(c,device);
+	/* Put in file */
+	puts(c);
+	/* Copy next command */
+	strcpy(c,"iface ");
+    /* Append in command */
+	strcat(c,device);
+	/* Append for  command */
+	strcat(c," inet ");
+	/* Append for command */
+	strcat(c,alloc);
+	/* Put in file */
+	puts(c);
+	/* Copy the command */
+	strcpy(c,"        address ");
+	/* Append the command */
+	strcat(c,ip);
+	/* Put in file */
+	puts(c);
+	/* Copy the command */
+	strcpy(c,"        netmask ");
+	/* Append the command */
+	strcat(c,sm);
+	/* Put in file */
+	puts(c);
+	/* Copy the command */
+	strcpy(c,"        gatewat ");
+    /* Append the command */
+	strcat(c,rout);
+	/* Put in file */
+	puts(c);
+	
+	
+    /* Close file stream */
+	fclose(fp);
 	
 }
-
-/** 
- *  @brief Description on main
- *  
- *  Full description of the function
- *
- *  @return List all Function returns 
- */
-
-int main (void)
-
-{/* Open the example.json file in read mode */
-
-/*----------------------wifi---------------------*/
-
-
-        FILE* fp = fopen("example.json", "rb"); 
+void function_1 (void)
+{   /* Open the example.json file in read mode */
+     FILE* fp = fopen("example.json", "rb"); 
 
         /* Declare read buffer */
         char readBuffer[65536];
@@ -91,74 +147,55 @@ int main (void)
 
         /* Close the example.json file*/
         fclose(fp);
-	char nm[1000]="nmcli d wifi connect ";
+        /*copying  nmcli command */
+	   char nm[100]="nmcli d wifi connect ";
+	    /* parsing ssid from json file */
        Value& essid = d["wireless"]["ssid"];
+       /* variable to copy ssid  */
        char ssid[100];
+       /* Copying the parsed string to variable */
        strcpy(ssid,essid.GetString());
-	Value& epass = d["wireless"]["password"];
-	char pass[100];
-	strcpy(pass,epass.GetString());
+       /* Parsing password */
+	   Value& epass = d["wireless"]["password"];
+	   /* variable to copy ssid */
+	   char pass[100];
+	   /*Copying the parsed string to variable */
+	   strcpy(pass,epass.GetString());
 
-	strcat(nm,ssid);
-	strcat(nm," password");
-	strcat(nm,pass);
-	system(nm);
+        /* Appending to command */
+    	strcat(nm,ssid);
+	    /* Appending to command */
+	    strcat(nm," password");
+	    /* Appending to command */
+    	strcat(nm,pass);
+	    system(nm);
+}
+
+/** 
+ *  @brief Description on main
+ *  
+ *  Full description of the function
+ *
+ *  @return List all Function returns 
+ */
+
+int main (void)
+
+{
+    
+    puts("Getting Started.............")
+    puts("-----Starting Wfifi------")
+
+/*----------------------wifi function---------------------*/
+function_1();
+
+   puts("Getting Ethernet data.............")
+    puts("-----Starting Ethernet connection------")     
 /*-------------Ethernet--------------*/
-	
-	 fp = fopen("/etc/network/interfaces", "wb"); 
-
-	Value& edevice = d["ethernet"][0]["device"];
-	char device[100];
-        strcpy(device,edevice.GetString());
-	Value& ealloc = d["ethernet"][0]["allocation"];
-	char alloc[100];
-        strcpy(alloc,ealloc.GetString());
-	Value& eIp = d["ethernet"][0]["ipAddress"];
-	char ip[100];
-        strcpy(ip,eIp.GetString());
-	Value& esm = d["ethernet"][0]["subnetMask"];
-	char sm[100];
-        strcpy(sm,esm.GetString());
-	Value& erout = d["ethernet"][0]["routerAddress"];
-	char rout[100];
-        strcpy(rout,erout.GetString());
-
-	char c[100]="auto ";
-	strcat(c,device);
-	puts(c);
-	strcpy(c,"iface ");
-
-	strcat(c,device);
-	strcat(c," inet ");
-	strcat(c,alloc);
-	puts(c);
-	strcpy(c,"        address ");
-	
-	strcat(c,ip);
-	puts(c);
-	strcpy(c,"        netmask ");
-	
-	strcat(c,sm);
-	puts(c);
-	strcpy(c,"        gatewat ");
-	
-	strcat(c,rout);
-	puts(c);
-	
-	
-
-	fclose(fp);
+function_2();
 
 	
-	
-	
 
-
-
-
-
-
-        /*Make sure you comment every line */
         return 0;
         
 }

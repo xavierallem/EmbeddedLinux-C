@@ -50,7 +50,7 @@ using namespace rapidjson;
  *  @return List all Function returns 
  */
 
-void function_2 (void)
+void function_2 (Document& jsonDocument)
 {
 
 
@@ -58,31 +58,31 @@ void function_2 (void)
 	/* Open the interfaces file in write mode */
      FILE*	fp = fopen("/etc/network/interfaces", "wb"); 
     /* Parsing device */
-	Value& edevice = d["ethernet"][0]["device"];
+	Value& edevice = jsonDocument["ethernet"][0]["device"];
 	/* variable to store  */
 	char device[100];
 	/* Copying parsed data to variable */
     strcpy(device,edevice.GetString());
     /* Parsing allocation data */
-	Value& ealloc = d["ethernet"][0]["allocation"];
+	Value& ealloc = jsonDocument["ethernet"][0]["allocation"];
 	/* Variable to store */
 	char alloc[100];
 	/* Copying the parsed data to variable */
     strcpy(alloc,ealloc.GetString());
     /* Parsing Ip */
-	Value& eIp = d["ethernet"][0]["ipAddress"];
+	Value& eIp = jsonDocument["ethernet"][0]["ipAddress"];
 	/* Variable to store */
 	char ip[100];
 	/* Coping parsed data into variable */
     strcpy(ip,eIp.GetString());
     /* Parsing subnet mask */
-	Value& esm = d["ethernet"][0]["subnetMask"];
+	Value& esm = jsonDocument["ethernet"][0]["subnetMask"];
 	/* Variable to store */
 	char sm[100];
 	/* Copying parsed data into variable  */
     strcpy(sm,esm.GetString());
     /* Parsing router address */
-	Value& erout = d["ethernet"][0]["routerAddress"];
+	Value& erout = jsonDocument["ethernet"][0]["routerAddress"];
 	/* Variable to store */
 	char rout[100];
 	/* Copying the parsed data */
@@ -129,34 +129,18 @@ void function_2 (void)
 	fclose(fp);
 	
 }
-void function_1 (void)
-{   /* Open the example.json file in read mode */
-     FILE* fp = fopen("example.json", "rb"); 
-
-        /* Declare read buffer */
-        char readBuffer[65536];
-
-        /* Declare stream for reading the example stream */
-        FileReadStream is(fp, readBuffer, sizeof(readBuffer));
-
-        /* Declare a JSON document. JSON document parsed will be stored in this variable */
-        Document d;
-
-        /* Parse example.json and store it in `d` */
-        d.ParseStream(is);
-
-        /* Close the example.json file*/
-        fclose(fp);
+void function_1 (Document& jsonDocument)
+{   
         /*copying  nmcli command */
 	   char nm[100]="nmcli d wifi connect ";
 	    /* parsing ssid from json file */
-       Value& essid = d["wireless"]["ssid"];
+       Value& essid = jsonDocument["wireless"]["ssid"];
        /* variable to copy ssid  */
        char ssid[100];
        /* Copying the parsed string to variable */
        strcpy(ssid,essid.GetString());
        /* Parsing password */
-	   Value& epass = d["wireless"]["password"];
+	   Value& epass = jsonDocument["wireless"]["password"];
 	   /* variable to copy ssid */
 	   char pass[100];
 	   /*Copying the parsed string to variable */
@@ -184,15 +168,34 @@ int main (void)
 {
     
     puts("Getting Started.............");
+    
+   /* Open the example.json file in read mode */
+     FILE* fp = fopen("example.json", "rb"); 
+
+        /* Declare read buffer */
+        char readBuffer[65536];
+
+        /* Declare stream for reading the example stream */
+        FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+
+        /* Declare a JSON document. JSON document parsed will be stored in this variable */
+        Document d;
+
+        /* Parse example.json and store it in `d` */
+        d.ParseStream(is);
+
+        /* Close the example.json file*/
+        fclose(fp);
+        
     puts("-----Starting Wfifi------");
 
 /*----------------------wifi function---------------------*/
-function_1();
+function_1(d);
 
    puts("Getting Ethernet data.............");
     puts("-----Starting Ethernet connection------");
 /*-------------Ethernet--------------*/
-function_2();
+function_2(d);
 
 	
 

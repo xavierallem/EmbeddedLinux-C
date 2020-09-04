@@ -66,7 +66,7 @@ int searchInFile(char *fname, char *str) {
         }
         line_num++;
     }
-    free(temp);
+    free(str);
     
 
     if(find_result == 0) {

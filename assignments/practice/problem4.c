@@ -66,6 +66,7 @@ int searchInFile(char *fname, char *str) {
         }
         line_num++;
     }
+    free(temp);
     
 
     if(find_result == 0) {
@@ -73,10 +74,9 @@ int searchInFile(char *fname, char *str) {
         
     }
     
-    //Close the file if still open.
-    if(fp) {
+
         fclose(fp);
-    }
+   
     return(0);
 }
 

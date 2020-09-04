@@ -152,7 +152,30 @@ void function_1 (Document& jsonDocument)
 	    strcat(nm," password");
 	    /* Appending to command */
     	strcat(nm,pass);
+    	/* System command */
 	    system(nm);
+}
+void initialize(Document& jsonDocument)
+{
+ /* Parsing host */
+Value& ehost = jsonDocument["hostname"];
+/* Parsing time */
+Value& etime = jsonDocument["timezone"];
+/* variable to store the command  */
+char host[100]="sudo hostname ";
+/* Copying hostname */
+strcpy(host,eshost.GetString());
+/* System command */
+system(host);
+/* variable to store the command */
+char time[100]="sudo timedatectl set-timezone ";
+/* Copy the time details */
+strcpy(time,etime.GetString());
+/* System command */
+system(time);
+
+
+
 }
 
 /** 
@@ -167,7 +190,7 @@ int main (void)
 
 {
     
-    puts("Getting Started.............");
+    puts("Getting Started/Initializing.............");
     
    /* Open the example.json file in read mode */
      FILE* fp = fopen("example.json", "rb"); 
@@ -186,6 +209,10 @@ int main (void)
 
         /* Close the example.json file*/
         fclose(fp);
+        
+    /*---------------Initializing----------------*/    
+    initialize(d);
+    
         
     puts("-----Starting Wfifi------");
 

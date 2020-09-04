@@ -66,6 +66,7 @@ int searchInFile(char *fname, char *str) {
         }
         line_num++;
     }
+    // Free the heap
     free(str);
     
 
@@ -74,7 +75,7 @@ int searchInFile(char *fname, char *str) {
         
     }
     
-
+// Free the stream
         fclose(fp);
    
     return(0);

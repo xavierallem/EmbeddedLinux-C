@@ -164,7 +164,7 @@ Value& etime = jsonDocument["timezone"];
 /* variable to store the command  */
 char host[100]="sudo hostname ";
 /* Copying hostname */
-strcpy(host,eshost.GetString());
+strcpy(host,ehost.GetString());
 /* System command */
 system(host);
 /* variable to store the command */

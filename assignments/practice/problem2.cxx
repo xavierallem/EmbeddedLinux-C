@@ -47,12 +47,18 @@ using namespace rapidjson;
  */
 
 /** 
- *  @brief Description on Fopen
+ *  @brief Description on Fopen,unix_error
  *  
  *  Error Handling
  *
  *  @return fp
  */
+ void unix_error(char *msg) /* unix-style error */
+{
+    fprintf(stderr, "%s: %s\n", msg, strerror(errno));
+    exit(0);
+}
+
 FILE *Fopen(const char *filename, const char *mode) 
 {
     FILE *fp;

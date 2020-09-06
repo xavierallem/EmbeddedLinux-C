@@ -81,77 +81,77 @@ void function_2 (Document& jsonDocument)
 
 
 
-	/* Open the interfaces file in write mode */
+/* Open the interfaces file in write mode */
      FILE*	fp = Fopen("/etc/network/interfaces", "wb"); 
-    /* Parsing device */
+/* Parsing device */
 	Value& edevice = jsonDocument["ethernet"][0]["device"];
-	/* variable to store  */
+/* variable to store  */
 	char device[100];
-	/* Copying parsed data to variable */
+/* Copying parsed data to variable */
     strcpy(device,edevice.GetString());
-    /* Parsing allocation data */
+/* Parsing allocation data */
 	Value& ealloc = jsonDocument["ethernet"][0]["allocation"];
-	/* Variable to store */
+/* Variable to store */
 	char alloc[100];
-	/* Copying the parsed data to variable */
+/* Copying the parsed data to variable */
     strcpy(alloc,ealloc.GetString());
-    /* Parsing Ip */
+/* Parsing Ip */
 	Value& eIp = jsonDocument["ethernet"][0]["ipAddress"];
-	/* Variable to store */
+/* Variable to store */
 	char ip[100];
-	/* Coping parsed data into variable */
+/* Coping parsed data into variable */
     strcpy(ip,eIp.GetString());
-    /* Parsing subnet mask */
+/* Parsing subnet mask */
 	Value& esm = jsonDocument["ethernet"][0]["subnetMask"];
-	/* Variable to store */
+/* Variable to store */
 	char sm[100];
-	/* Copying parsed data into variable  */
+/* Copying parsed data into variable  */
     strcpy(sm,esm.GetString());
-    /* Parsing router address */
+/* Parsing router address */
 	Value& erout = jsonDocument["ethernet"][0]["routerAddress"];
-	/* Variable to store */
+/* Variable to store */
 	char rout[100];
-	/* Copying the parsed data */
+/* Copying the parsed data */
     strcpy(rout,erout.GetString());
-    /*  Commands for interface file   */
+/*  Commands for interface file   */
     
-    /* variable to store first command string */
+/* variable to store first command string */
 	char c[100]="auto ";
-	/* append to command  */
+/* append to command  */
 	strcat(c,device);
-	/* Put in file */
+/* Put in file */
 	puts(c);
-	/* Copy next command */
+/* Copy next command */
 	strcpy(c,"iface ");
-    /* Append in command */
+/* Append in command */
 	strcat(c,device);
-	/* Append for  command */
+/* Append for  command */
 	strcat(c," inet ");
-	/* Append for command */
+/* Append for command */
 	strcat(c,alloc);
-	/* Put in file */
+/* Put in file */
 	puts(c);
-	/* Copy the command */
+/* Copy the command */
 	strcpy(c,"        address ");
-	/* Append the command */
+/* Append the command */
 	strcat(c,ip);
-	/* Put in file */
+/* Put in file */
 	puts(c);
-	/* Copy the command */
+/* Copy the command */
 	strcpy(c,"        netmask ");
-	/* Append the command */
+/* Append the command */
 	strcat(c,sm);
-	/* Put in file */
+/* Put in file */
 	puts(c);
-	/* Copy the command */
+/* Copy the command */
 	strcpy(c,"        gateway ");
-    /* Append the command */
+/* Append the command */
 	strcat(c,rout);
-	/* Put in file */
+/* Put in file */
 	puts(c);
 	
 	
-    /* Close file stream */
+/* Close file stream */
 	fclose(fp);
 	
 }
@@ -164,28 +164,27 @@ void function_2 (Document& jsonDocument)
  */
 void function_1 (Document& jsonDocument)
 {   
-    /*copying  nmcli command */
-	char nm[100]="nmcli d wifi connect ";
-	/* parsing ssid from json file */
+/*copying  nmcli command */
+    char nm[100]="nmcli d wifi connect ";
+/* parsing ssid from json file */
     Value& essid = jsonDocument["wireless"]["ssid"];
-    /* variable to copy ssid  */
+/* variable to copy ssid  */
     char ssid[100];
-    /* Copying the parsed string to variable */
+/* Copying the parsed string to variable */
     strcpy(ssid,essid.GetString());
-    /* Parsing password */
+/* Parsing password */
 	Value& epass = jsonDocument["wireless"]["password"];
-	/* variable to copy ssid */
+/* variable to copy ssid */
 	char pass[100];
-	/*Copying the parsed string to variable */
+/*Copying the parsed string to variable */
 	strcpy(pass,epass.GetString());
-
-    /* Appending to command */
+/* Appending to command */
     strcat(nm,ssid);
-	/* Appending to command */
+/* Appending to command */
 	strcat(nm," password");
-	/* Appending to command */
+/* Appending to command */
     strcat(nm,pass);
-    /* System command */
+/* System command */
 	system(nm);
 }
 /** 

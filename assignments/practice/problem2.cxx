@@ -43,11 +43,27 @@ using namespace rapidjson;
  */
 
 /** 
- *  @brief Description on function_1
+ *  @brief Description on Fopen
  *  
- *  Full description of the function
+ *  Error Handling
  *
- *  @return List all Function returns 
+ *  @return fp
+ */
+FILE *Fopen(const char *filename, const char *mode) 
+{
+    FILE *fp;
+
+    if ((fp = fopen(filename, mode)) == NULL)
+    unix_error((char*)"Fopen error");
+
+    return fp;
+}
+/** 
+ *  @brief Description on function_2
+ *  
+ *  Contains code to connect Ethernet connection
+ *
+ *  @return void
  */
 
 void function_2 (Document& jsonDocument)
@@ -56,7 +72,7 @@ void function_2 (Document& jsonDocument)
 
 
 	/* Open the interfaces file in write mode */
-     FILE*	fp = fopen("/etc/network/interfaces", "wb"); 
+     FILE*	fp = Fopen("/etc/network/interfaces", "wb"); 
     /* Parsing device */
 	Value& edevice = jsonDocument["ethernet"][0]["device"];
 	/* variable to store  */
@@ -118,7 +134,7 @@ void function_2 (Document& jsonDocument)
 	/* Put in file */
 	puts(c);
 	/* Copy the command */
-	strcpy(c,"        gatewat ");
+	strcpy(c,"        gateway ");
     /* Append the command */
 	strcat(c,rout);
 	/* Put in file */
@@ -129,50 +145,64 @@ void function_2 (Document& jsonDocument)
 	fclose(fp);
 	
 }
+/** 
+ *  @brief Description on function_1
+ *  
+ *  Contains code to execute wifi
+ *
+ *  @returnvoid 
+ */
 void function_1 (Document& jsonDocument)
 {   
-        /*copying  nmcli command */
-	   char nm[100]="nmcli d wifi connect ";
-	    /* parsing ssid from json file */
-       Value& essid = jsonDocument["wireless"]["ssid"];
-       /* variable to copy ssid  */
-       char ssid[100];
-       /* Copying the parsed string to variable */
-       strcpy(ssid,essid.GetString());
-       /* Parsing password */
-	   Value& epass = jsonDocument["wireless"]["password"];
-	   /* variable to copy ssid */
-	   char pass[100];
-	   /*Copying the parsed string to variable */
-	   strcpy(pass,epass.GetString());
+    /*copying  nmcli command */
+	char nm[100]="nmcli d wifi connect ";
+	/* parsing ssid from json file */
+    Value& essid = jsonDocument["wireless"]["ssid"];
+    /* variable to copy ssid  */
+    char ssid[100];
+    /* Copying the parsed string to variable */
+    strcpy(ssid,essid.GetString());
+    /* Parsing password */
+	Value& epass = jsonDocument["wireless"]["password"];
+	/* variable to copy ssid */
+	char pass[100];
+	/*Copying the parsed string to variable */
+	strcpy(pass,epass.GetString());
 
-        /* Appending to command */
-    	strcat(nm,ssid);
-	    /* Appending to command */
-	    strcat(nm," password");
-	    /* Appending to command */
-    	strcat(nm,pass);
-    	/* System command */
-	    system(nm);
+    /* Appending to command */
+    strcat(nm,ssid);
+	/* Appending to command */
+	strcat(nm," password");
+	/* Appending to command */
+    strcat(nm,pass);
+    /* System command */
+	system(nm);
 }
+/** 
+ *  @brief Description on initialize
+ *  
+ *  Code containing for Host and Time
+ *
+ *  @return List all Function returns 
+ */
 void initialize(Document& jsonDocument)
 {
- /* Parsing host */
-Value& ehost = jsonDocument["hostname"];
-/* Parsing time */
-Value& etime = jsonDocument["timezone"];
-/* variable to store the command  */
-char host[100]="sudo hostname ";
-/* Copying hostname */
-strcpy(host,ehost.GetString());
-/* System command */
-system(host);
-/* variable to store the command */
-char time[100]="sudo timedatectl set-timezone ";
-/* Copy the time details */
-strcpy(time,etime.GetString());
-/* System command */
-system(time);
+    /* Parsing host */
+    Value& ehost = jsonDocument["hostname"];
+    /* Parsing time */
+    Value& etime = jsonDocument["timezone"];
+    /* variable to store the command  */
+    char host[100]="sudo hostname ";
+    /* Copying hostname */
+    strcpy(host,ehost.GetString());
+    /* System command */
+    system(host);
+    /* variable to store the command */
+    char time[100]="sudo timedatectl set-timezone ";
+    /* Copy the time details */
+    strcpy(time,etime.GetString());
+    /* System command */
+    system(time);
 
 
 
@@ -181,9 +211,10 @@ system(time);
 /** 
  *  @brief Description on main
  *  
- *  Full description of the function
+ * Initializes the startup messages and function call
+ *  
  *
- *  @return List all Function returns 
+ *  @return p
  */
 
 int main (void)
@@ -192,37 +223,37 @@ int main (void)
     
     puts("Getting Started/Initializing.............");
     
-   /* Open the example.json file in read mode */
-     FILE* fp = fopen("example.json", "rb"); 
+/* Open the example.json file in read mode */
+     FILE* fp = Fopen("example.json", "rb"); 
 
-        /* Declare read buffer */
-        char readBuffer[65536];
+/* Declare read buffer */
+     char readBuffer[65536];
 
-        /* Declare stream for reading the example stream */
-        FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+/* Declare stream for reading the example stream */
+    FileReadStream is(fp, readBuffer, sizeof(readBuffer));
 
-        /* Declare a JSON document. JSON document parsed will be stored in this variable */
-        Document d;
+/* Declare a JSON document. JSON document parsed will be stored in this variable */
+    Document d;
 
-        /* Parse example.json and store it in `d` */
-        d.ParseStream(is);
+/* Parse example.json and store it in `d` */
+     d.ParseStream(is);
 
-        /* Close the example.json file*/
-        fclose(fp);
+/* Close the example.json file*/
+    fclose(fp);
         
-    /*---------------Initializing----------------*/    
+/*---------------Initializing----------------*/    
     initialize(d);
     
         
     puts("-----Starting Wfifi------");
 
 /*----------------------wifi function---------------------*/
-function_1(d);
+    function_1(d);
 
-   puts("Getting Ethernet data.............");
+    puts("Getting Ethernet data.............");
     puts("-----Starting Ethernet connection------");
 /*-------------Ethernet--------------*/
-function_2(d);
+    function_2(d);
 
 	
 

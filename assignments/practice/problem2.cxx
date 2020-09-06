@@ -196,21 +196,21 @@ void function_1 (Document& jsonDocument)
  */
 void initialize(Document& jsonDocument)
 {
-    /* Parsing host */
+/* Parsing host */
     Value& ehost = jsonDocument["hostname"];
-    /* Parsing time */
+/* Parsing time */
     Value& etime = jsonDocument["timezone"];
-    /* variable to store the command  */
+/* variable to store the command  */
     char host[100]="sudo hostname ";
-    /* Copying hostname */
+/* Copying hostname */
     strcpy(host,ehost.GetString());
-    /* System command */
+/* System command */
     system(host);
-    /* variable to store the command */
+/* variable to store the command */
     char time[100]="sudo timedatectl set-timezone ";
-    /* Copy the time details */
+/* Copy the time details */
     strcpy(time,etime.GetString());
-    /* System command */
+/* System command */
     system(time);
 
 

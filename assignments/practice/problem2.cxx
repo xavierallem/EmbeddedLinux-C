@@ -31,6 +31,10 @@
 #include "rapidjson/filewritestream.h"
 #include "rapidjson/prettywriter.h"
 
+/* --- Project Includes --- */
+#include <errno.h>
+
+
 using namespace rapidjson;
 
 

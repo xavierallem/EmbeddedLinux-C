@@ -69,7 +69,7 @@ int searchInFile(char *fname, char *str) {
     // Free the heap
     free(str);
     free(fname);
-    delete [] temp;
+    
     
 
     if(find_result == 0) {

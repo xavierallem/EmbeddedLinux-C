@@ -52,7 +52,9 @@ int searchInFile(char *fname, char *str) {
 
     if((fp = fopen(fname, "r")) == NULL) {
         printf("Error: Opening the file.\n");
-        
+        // Free the heap
+        free(fname);
+        fclose(fp);
       return(-1);
     }
 
@@ -61,6 +63,7 @@ int searchInFile(char *fname, char *str) {
             printf("A match found on line: %d\n", line_num);
             printf("\n%s\n", temp);
             find_result++;
+            
            
             return (1);
         }
@@ -69,6 +72,11 @@ int searchInFile(char *fname, char *str) {
     // Free the heap
     free(str);
     free(fname);
+    // Free the stream
+   if(fp) {
+        fclose(fp);
+    }
+
     
     
 
@@ -77,8 +85,7 @@ int searchInFile(char *fname, char *str) {
         
     }
     
-// Free the stream
-        fclose(fp);
+;
    
     return(0);
 }

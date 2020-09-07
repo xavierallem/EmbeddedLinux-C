@@ -54,6 +54,7 @@ int searchInFile(char *fname, char *str) {
         printf("Error: Opening the file.\n");
         // Free the heap
         free(fname);
+        free(str);
         fclose(fp);
       return(-1);
     }
@@ -64,7 +65,10 @@ int searchInFile(char *fname, char *str) {
             printf("\n%s\n", temp);
             find_result++;
             
-           
+           // Free the heap
+           free(fname);
+           free(str);
+           fclose(fp);
             return (1);
         }
         line_num++;
